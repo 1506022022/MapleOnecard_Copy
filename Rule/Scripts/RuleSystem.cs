@@ -3,9 +3,11 @@ public static class RuleSystem
     public static bool Rule(Card info)
     {
 
+        // 선택된 카드의 정보를 불러온다.
         var card = Focus.Singleton.info;
         if (card == null) return false;
 
+        // 제출 가능한 카드인지 확인한다.
         if (info.number == ENumber.special && info.symbol == ESymbol.Violet) return true;
         if (AttackFlame.Singleton.Count > 0)
         {
