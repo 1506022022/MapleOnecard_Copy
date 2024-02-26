@@ -46,6 +46,7 @@ public class MyHand : MonoBehaviour
 
     private void Awake()
     {
+    // 재시작 이벤트를 추가한다. 
         restartObserver = new ObserverBot(reset);
         Broadcaster.RestartChannel.AddObserver(restartObserver);
 
@@ -53,6 +54,7 @@ public class MyHand : MonoBehaviour
     }
     private void Update()
     {
+        // 소지한 카드에 변동이 생기는지 확인한다.
         if (observer != transform.childCount)
         {
             LastCard();
@@ -60,16 +62,19 @@ public class MyHand : MonoBehaviour
 
             if (play)
             {
+            // 손패를 모두 털었으면 승리한다.
                 if (observer > 0 && transform.childCount == 0)
                 {
                     me.Win();
                 }
+                // 16장을 초과하면 패배한다.
                 else if (transform.childCount > 16)
                 {
                     dropoutSubject.Notify();
                     me.Lose();
                     DropDown();
                 }
+                // 원카드
                 if (observer > 1 && transform.childCount == 1)
                 {
                     lastcardSubject.Notify();
@@ -80,6 +85,7 @@ public class MyHand : MonoBehaviour
 
 
     }
+    // 재시작시 실행되는 이벤트
     private void reset()
     {
         play = false;
@@ -105,6 +111,7 @@ public class MyHand : MonoBehaviour
 
         Sort();
     }
+    // 손패의 레이어를 정렬시킨다. 
     public void Sort()
     {
 
@@ -115,12 +122,15 @@ public class MyHand : MonoBehaviour
             transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -32747 +( i * 2)+1;
         }
     }
+
+    // 주어진 카드를 획득하고, 손패를 정렬시킨다.
     public void AddCard(Card info)
     {
         var inst = Instantiate(cardPre,transform).GetComponent<CardButton>();
         inst.Init(info);
         Sort();
     }
+    
     private void LastCard()
     {
         if (transform.childCount == 0) return;
@@ -134,6 +144,8 @@ public class MyHand : MonoBehaviour
                 card.button.enabled = false;
         }
     }
+
+    // 특수 카드의 효과로 소지한 녹색 카드를 제거한다.
     public void DeleteGreenCard()
     {
         var cds = GetComponentsInChildren<CardButton>();
@@ -147,6 +159,8 @@ public class MyHand : MonoBehaviour
             }
         }
     }
+
+    // 게임에서 패배한 경우로 패를 몰수한다.
     public void DropDown()
     {
         play = false;
