@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ëª¨ë“  ì˜µì €ë²„ë“¤ì„ ê´€ë¦¬í•œë‹¤.
+
 namespace ObserverPattern
 {
     public static class Broadcaster
     {
-        // ############################ Ã¤³Î ¼±¾ğºÎ
+        // ############################ ì±„ë„
         private static Channel gameStartChannel;
         private static Channel turnChangedChannel;
         private static Channel turnEndChannel;
@@ -19,7 +21,8 @@ namespace ObserverPattern
         private static Channel cardSubmitChannel;
         private static Channel restartChannel;
         private static Channel gameendChannel;
-        // ############################ ÇÁ·ÎÆÛÆ¼ ¼±¾ğºÎ
+        
+        // ############################ í”„ë¡œí¼í‹°
         public static Channel GameStartChannel
         {
             get
@@ -117,7 +120,7 @@ namespace ObserverPattern
             }
         }
 
-        //#########################################
+        //######################################### ì¬ì‹œì‘ ì´ë²¤íŠ¸
         public static void Reset()
         {
             gameStartChannel = null;
