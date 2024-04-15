@@ -10,7 +10,7 @@
 
 해당 포트폴리오에 사용된 리소스는 모두 메이플스토리의 **허락을 받고** 사용하였습니다.
 
-플레이 영상 : <https://youtu.be/q9gXEUtKlwg>
+플레이 영상 : <https://youtu.be/FjVJnLojaAo>
 
 
 ## 개발 기간
